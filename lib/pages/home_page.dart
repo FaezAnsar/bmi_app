@@ -7,83 +7,109 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/images.jpeg"),fit: BoxFit.cover
-          )
+            image: AssetImage("images/images.jpeg"),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-           SizedBox(height: 300,) ,
+            const SizedBox(
+              height: 300,
+            ),
             Container(
-              //color: Colors.red,
               child: Column(
-                
-              mainAxisAlignment: MainAxisAlignment.center,
-                //crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left:8.0),
-                    child: Container(
-                      
+                  const Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: SizedBox(
                       height: 140,
-                      child: Text("BMI",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 150,color: Color(0xff004581),overflow: TextOverflow.visible))),
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          "BMI",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 150,
+                              color: Color(0xff004581),
+                              overflow: TextOverflow.visible),
+                        ),
+                      ),
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left:20.0,),
-                    child: Text("Calculator",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50,color: Color(0xff014783)),),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20.0),
+                    child: Text(
+                      "Calculator",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 50,
+                          color: Color(0xff014783)),
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left:30.0),
-                    child: Text("How healthy are you?",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Color(0xff159bc8))),
-                  )
+                  const Padding(
+                    padding: EdgeInsets.only(left: 30.0),
+                    child: Text(
+                      "How healthy are you?",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color(0xff159bc8)),
+                    ),
+                  ),
                 ],
-                
               ),
             ),
-            SizedBox(height: 308,),
+            const Spacer(),
             Stack(
-              clipBehavior: Clip.none,
               alignment: Alignment.center,
-  children: [
-    Container(
-      
-      height: 100,
-      
-      decoration: BoxDecoration(
-        color: Color(0xff018abd),
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
-      ),
-    ),
-    Positioned(
-      bottom: 60,
-      child: Center(
-      child: Container(
-        
-        height: 100,
-        child: MaterialButton(
-          color: const Color.fromARGB(255, 10, 56, 101) ,
-          //backgroundColor: Colors.blue.shade700,
-          shape: CircleBorder(side: BorderSide(width: 7,color: Colors.white),),
-        onPressed: () {
-          Navigator.pushNamed(context, "/main");
-        },
-        child: Text(
-          "Let's Go",
-          style: TextStyle(fontSize: 18, color: Colors.white,fontWeight: FontWeight.bold),
+              clipBehavior: Clip
+                  .none, // This allows the button to overflow the bottom container
+              children: [
+                Container(
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    color: Color(0xff018abd),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top:
+                      -50, // Adjust to raise the button above the bottom container
+                  child: Container(
+                    height: 100,
+                    child: MaterialButton(
+                      color: const Color.fromARGB(255, 10, 56, 101),
+                      shape: const CircleBorder(
+                        side: BorderSide(width: 7, color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/main");
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.all(18.0),
+                        child: Text(
+                          "Let's Go",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-        ),
-      ),
-      )
-
-    ),
-  ],
-)
-
-
-            
-          ]),
       ),
     );
   }
